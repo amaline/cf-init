@@ -5,3 +5,4 @@ machine:
 dependencies:
   override:
     - gem install bundler
+    - cd deployments/cf-examples; bundle install
