@@ -6,4 +6,10 @@ dependencies:
   override:
     - gem install bundler
     - cd deployments/cf-example; bundle install
-    - env
+    - env | grep BOSH
+    
+general:
+  branches:
+    only:
+      - master # list of branches to build
+      - /feature-.*/ # or regexes
