@@ -6,3 +6,4 @@ dependencies:
   override:
     - gem install bundler
     - cd deployments/cf-example; bundle install
+    - env
