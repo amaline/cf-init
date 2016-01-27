@@ -6,7 +6,7 @@ dependencies:
   override:
     - gem install bundler
     - cd deployments/cf-example; bundle install
-    - cd deployments/cf-example; env | grep BOSH > env.log
+    - cd deployments/cf-example; bosh aws create
     
 general:
   branches:
