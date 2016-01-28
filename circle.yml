@@ -7,8 +7,9 @@ dependencies:
     - gem install bundler
     - cd deployments/cf-example; bundle install
     # - cd deployments/cf-example; bosh aws create
-    - sed -i -e 's/default_dhcp_opts\.delete/#default_dhcp_opts.delete/' /usr/local/bundle/gems/bosh_cli_plugin_aws-*/lib/bosh_cli_plugin_aws/vpc.rb
-    - cat /usr/local/bundle/gems/bosh_cli_plugin_aws-*/lib/bosh_cli_plugin_aws/vpc.rb
+    - find / -name vpc.rb -print
+    # - sed -i -e 's/default_dhcp_opts\.delete/#default_dhcp_opts.delete/' /usr/local/bundle/gems/bosh_cli_plugin_aws-*/lib/bosh_cli_plugin_aws/vpc.rb
+    # - cat /usr/local/bundle/gems/bosh_cli_plugin_aws-*/lib/bosh_cli_plugin_aws/vpc.rb
     
 general:
   branches:
