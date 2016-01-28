@@ -5,11 +5,15 @@ machine:
 dependencies:
   override:
     - gem install bundler
+    # install gems
     - cd deployments/cf-example; bundle install
-    # - cd deployments/cf-example; bosh aws create
-    # - find / -name vpc.rb -print
+    # update vpc.rb to not delete the default dhcp options that may be used by another VPC
     - sed -i -e 's/default_dhcp_opts\.delete/#default_dhcp_opts.delete/' /home/ubuntu/.rvm/gems/ruby-*/gems/bosh_cli_plugin_aws-*/lib/bosh_cli_plugin_aws/vpc.rb
-    - cat /home/ubuntu/.rvm/gems/ruby-1.9.3-p551/gems/bosh_cli_plugin_aws-1.3184.1.0/lib/bosh_cli_plugin_aws/vpc.rb
+    # Setup AWS for BOSH
+    - cd deployments/cf-example; bosh aws create
+    # Move the SSH key to the artifacts folder
+    - cd deployments/cf-example; mkdir .ssh; cp /home/ubuntu/.ssh/id_rsa_bosh .ssh/id_rsa_bosh
+    - cat /home/ubuntu/.ssh/id_rsa_bosh
     
 general:
   branches:
